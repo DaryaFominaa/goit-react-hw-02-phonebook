@@ -33,8 +33,6 @@ export const ContactForm = ({ onSubmit }) => {
         onSubmit={handleSubmit}
       >
         <Form>
-          {/* СТИЛИ ДЛЯ ДИВ display: flex; flex-direction: column; width: 200px;
-          gap: 10px px ; */}
           <Wrap>
             <label htmlFor="name">Name</label>
             <Field

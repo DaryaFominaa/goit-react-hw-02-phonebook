@@ -16,6 +16,9 @@ export class App extends Component {
 
   addContact = (name, number) => {
     console.log(name, number);
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, { name, number }],
+    }));
   };
 
   // handleNameChange = event => {
@@ -34,7 +37,7 @@ export class App extends Component {
     return (
       <>
         <ContactForm onSubmit={this.addContact}></ContactForm>
-        <ContactList>{this.state.contacts} </ContactList>
+        {/* <ContactList>{this.state.contacts} </ContactList> */}
         {/* <ContactList contacts={this.state.contacts}></ContactList> */}
       </>
     );
