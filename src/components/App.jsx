@@ -14,6 +14,10 @@ export class App extends Component {
 
   nameId = nanoid();
 
+  addContact = (name, number) => {
+    console.log(name, number);
+  };
+
   // handleNameChange = event => {
   //   const { name, value } = event.currentTarget;
 
@@ -29,42 +33,9 @@ export class App extends Component {
   render() {
     return (
       <>
-        <ContactForm></ContactForm>
-        <ContactList contacts={this.state.contacts}></ContactList>
+        <ContactForm onSubmit={this.addContact}></ContactForm>
+        <ContactList>{this.state.contacts} </ContactList>
         {/* <ContactList contacts={this.state.contacts}></ContactList> */}
-
-        {/* <h2>Phonebook</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor={this.nameId}>
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleNameChange}
-              id={this.nameId}
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          </label>
-          <button type="submit">Add contact</button>
-        </form> */}
-
-        {/* <Formik>
-          <Form>
-            <label htmlFor="name">Name</label>
-            <Field
-              type="text"
-              name="name"
-              value={this.state.name}
-              onInputChange={this.handleChange}
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-            <button type="submit">Add contact</button>
-          </Form>
-        </Formik> */}
       </>
     );
   }

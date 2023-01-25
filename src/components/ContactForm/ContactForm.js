@@ -1,30 +1,35 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
 import { Wrap } from './ContactForm.styled';
-const initialValues = { name: '' };
+import * as yup from 'yup';
 
-// const schema = yup.object().shape({
-//   name: yup.string().required,
-// });
-export const ContactForm = () => {
-  //   const handleSubmit = event => {
-  //     event.preventDefault();
-  //     const { name } = event.target.elements;
-  //     console.log(name.value);
-  //   };
+const initialValues = { name: '', number: '' };
+
+const schema = yup.object().shape({
+  name: yup.string().required('Please enter name'),
+  number: yup.string(),
+});
+
+export const ContactForm = ({ onSubmit }) => {
+  const handleSubmit = event => {
+    event.preventDefault();
+    const { name, number } = event.target.elements;
+    onSubmit(name.value, number.value);
+  };
   const nameId = nanoid();
   const numberId = nanoid();
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
 
-    resetForm();
-  };
+  // const handleSubmit = (values, { resetForm }) => {
+  //   console.log(values);
+
+  //   resetForm();
+  // };
   return (
     <>
       <h2>Phonebook</h2>
       <Formik
         initialValues={initialValues}
-        // validationSchema={schema}
+        validationSchema={schema}
         onSubmit={handleSubmit}
       >
         <Form>
