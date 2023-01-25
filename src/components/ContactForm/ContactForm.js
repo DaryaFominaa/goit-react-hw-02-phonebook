@@ -1,5 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
+import { Wrap } from './ContactForm.styled';
 const initialValues = { name: '' };
 
 // const schema = yup.object().shape({
@@ -28,7 +29,7 @@ export const ContactForm = () => {
         <Form>
           {/* СТИЛИ ДЛЯ ДИВ display: flex; flex-direction: column; width: 200px;
           gap: 10px px ; */}
-          <div>
+          <Wrap>
             <label htmlFor="name">Name</label>
             <Field
               type="text"
@@ -41,9 +42,9 @@ export const ContactForm = () => {
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
             />
-          </div>
+          </Wrap>
           <ErrorMessage name="name"> </ErrorMessage>
-          <div>
+          <Wrap>
             <label htmlFor="number">Number</label>
             <Field
               type="tel"
@@ -52,7 +53,7 @@ export const ContactForm = () => {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
             />
-          </div>
+          </Wrap>
           <button type="submit">Add contact</button>
         </Form>
       </Formik>
