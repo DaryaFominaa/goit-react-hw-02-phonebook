@@ -30,7 +30,7 @@ export class App extends Component {
     return (
       <>
         <ContactForm></ContactForm>
-        <ContactList contact={this.state.contacts}></ContactList>
+        <ContactList contacts={this.state.contacts}></ContactList>
         {/* <ContactList contacts={this.state.contacts}></ContactList> */}
 
         {/* <h2>Phonebook</h2>

@@ -6,11 +6,11 @@ export const ContactList = ({ contacts }) => {
   return (
     <>
       <h2>Contacts</h2>
-      {/* <ul>
+      <ul>
         {contacts.map(({ name, id }) => (
           <Contact key={id} contact={name}></Contact>
         ))}
-      </ul> */}
+      </ul>
     </>
   );
 };

@@ -1,10 +1,10 @@
 // import { nanoid } from 'nanoid';
 
-export const Contact = contact => {
+export const Contact = contacts => {
   //   const key = nanoid();
   return (
     <>
-      <p>{contact}</p>
+      <p>{contacts}</p>
     </>
   );
 };
