@@ -1,14 +1,12 @@
 import { Contact } from '../Contact/Contact';
 
-// import { nanoid } from 'nanoid';
 export const ContactList = ({ items }) => {
-  //   const contactId = nanoid();
   return (
     <>
       <h2>Contacts</h2>
       <ul>
-        {items.map((item, idx) => (
-          <li key={idx}>
+        {items.map((item, id) => (
+          <li key={id}>
             <Contact contact={item}></Contact>
           </li>
         ))}

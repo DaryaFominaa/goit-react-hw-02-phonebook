@@ -1,5 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { Wrap } from './ContactForm.styled';
 import * as yup from 'yup';
 
@@ -11,26 +11,24 @@ const schema = yup.object().shape({
 });
 
 export const ContactForm = ({ onSubmit }) => {
-  const handleSubmit = event => {
-    event.preventDefault();
-    const { name, number } = event.target.elements;
-    onSubmit(name.value, number.value);
-  };
-  const nameId = nanoid();
-  const numberId = nanoid();
-
-  // const handleSubmit = (values, { resetForm }) => {
-  //   console.log(values);
-
-  //   resetForm();
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   const { name, number } = event.target.elements;
+  //   onSubmit(name.value, number.value);
   // };
+
+  const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
+
+    resetForm();
+  };
   return (
     <>
       <h2>Phonebook</h2>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
-        onSubmit={handleSubmit}
+        onSubmit={onSubmit}
       >
         <Form>
           <Wrap>
@@ -38,10 +36,6 @@ export const ContactForm = ({ onSubmit }) => {
             <Field
               type="text"
               name="name"
-              id={nameId}
-              // value={this.state.name}
-              // onChange={this.handleNameChange}
-              // id={this.nameId}
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
@@ -56,7 +50,6 @@ export const ContactForm = ({ onSubmit }) => {
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
-              id={numberId}
             />
           </Wrap>
           <button type="submit">Add contact</button>
