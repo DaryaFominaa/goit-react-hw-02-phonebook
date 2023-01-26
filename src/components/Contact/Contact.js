@@ -1,7 +1,7 @@
-export const Contact = ({ item, name, number }) => {
+export const Contact = ({ item: { name, number } }) => {
   return (
     <>
-      <p item={item}>
+      <p>
         Name: {name} Phone:{number}
       </p>
     </>

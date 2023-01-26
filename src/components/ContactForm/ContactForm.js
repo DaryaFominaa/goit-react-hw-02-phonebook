@@ -18,7 +18,7 @@ export const ContactForm = ({ onSubmit }) => {
   // };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    onSubmit(values);
 
     resetForm();
   };
@@ -28,7 +28,7 @@ export const ContactForm = ({ onSubmit }) => {
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit()}
       >
         <Form>
           <Wrap>
