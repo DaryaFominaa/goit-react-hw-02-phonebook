@@ -1,4 +1,4 @@
-export const Contact = ({ item: { name, number } }) => {
+export const Contact = ({ contact: { name, number } }) => {
   return (
     <>
       <p>
