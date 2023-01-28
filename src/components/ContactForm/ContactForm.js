@@ -19,7 +19,7 @@ export const ContactForm = ({ onSubmit }) => {
 
   const handleSubmit = (values, { resetForm }) => {
     onSubmit(values);
-
+    // console.log(values);
     resetForm();
   };
   return (
@@ -30,7 +30,7 @@ export const ContactForm = ({ onSubmit }) => {
         onSubmit={handleSubmit}
       >
         <Form>
-          <Wrap>
+          <div>
             <label htmlFor="name">Name</label>
             <Field
               type="text"
@@ -40,9 +40,9 @@ export const ContactForm = ({ onSubmit }) => {
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
             />
-          </Wrap>
+          </div>
           <ErrorMessage name="name"> </ErrorMessage>
-          <Wrap>
+          <div>
             <label htmlFor="number">Number</label>
             <Field
               type="tel"
@@ -52,7 +52,7 @@ export const ContactForm = ({ onSubmit }) => {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
             />
-          </Wrap>
+          </div>
           <button type="submit">Add contact</button>
         </Form>
       </Formik>

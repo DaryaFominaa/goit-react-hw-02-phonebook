@@ -1,7 +1,9 @@
-export const Filter = ({ name }) => {
-  return (
-    <>
-      <input name={name}>Find contact</input>
-    </>
-  );
-};
+// export const Filter = ({ name, number }) => {
+//   return (
+//     <>
+//       <input name={name} number={number}>
+//         Find contact
+//       </input>
+//     </>
+//   );
+// };
