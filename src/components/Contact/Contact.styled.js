@@ -5,3 +5,12 @@ export const ContactEl = styled.p`
   gap: 30px;
   font-size: 22px;
 `;
+
+export const ButtonEl = styled.button`
+  padding: 8px;
+  font-size: 14px;
+
+  &:hover {
+    background-color: aqua;
+  }
+`;

@@ -1,7 +1,7 @@
 import { Contact } from '../Contact/Contact';
 import { ListEl } from './ContactList.styled';
 
-export const ContactList = ({ items }, onDelete) => {
+export const ContactList = ({ items, onDelete }) => {
   return (
     <>
       <ListEl>

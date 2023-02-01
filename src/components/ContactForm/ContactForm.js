@@ -1,6 +1,6 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-// import { nanoid } from 'nanoid';
-import { Wrap } from './ContactForm.styled';
+import { Formik, ErrorMessage } from 'formik';
+// import styled from '@emotion/styled';
+import { FormEl, Wrap, LabelEl, FieldEl, ButtonEl } from './ContactForm.styled';
 import * as yup from 'yup';
 
 const initialValues = { name: '', number: '' };
@@ -29,10 +29,10 @@ export const ContactForm = ({ onSubmit }) => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <div>
-            <label htmlFor="name">Name</label>
-            <Field
+        <FormEl>
+          <Wrap>
+            <LabelEl htmlFor="name">Name</LabelEl>
+            <FieldEl
               type="text"
               name="name"
               placeholder="Tom Smith"
@@ -40,11 +40,11 @@ export const ContactForm = ({ onSubmit }) => {
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
             />
-          </div>
+          </Wrap>
           <ErrorMessage name="name"> </ErrorMessage>
-          <div>
-            <label htmlFor="number">Number</label>
-            <Field
+          <Wrap>
+            <LabelEl htmlFor="number">Number</LabelEl>
+            <FieldEl
               type="tel"
               name="number"
               placeholder="+380"
@@ -52,9 +52,9 @@ export const ContactForm = ({ onSubmit }) => {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
             />
-          </div>
-          <button type="submit">Add contact</button>
-        </Form>
+          </Wrap>
+          <ButtonEl type="submit">Add contact</ButtonEl>
+        </FormEl>
       </Formik>
     </>
   );

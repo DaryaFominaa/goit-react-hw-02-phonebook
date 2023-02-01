@@ -4,6 +4,8 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+import { Container } from './App.styled';
+import { findAllInRenderedTree } from 'react-dom/test-utils';
 
 export class App extends Component {
   state = {
@@ -17,37 +19,24 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const hasName = this.state.contacts.includes(name);
-    const hasNumber = this.state.contacts.includes(number);
+    // const hasName = this.state.contacts.includes(name);
+    // const hasNumber = this.state.contacts.includes(number);
 
-    !hasName && !hasNumber
-      ? this.setState(prevState => ({
-          contacts: [
-            ...prevState.contacts,
-            { id: nanoid(), name: name, number: number },
-          ],
-        }))
-      : alert('This contact is alredy exists');
+    if (
+      this.state.contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      alert('This contact is alredy exists');
+      return;
+    }
+    this.setState(prevState => ({
+      contacts: [
+        ...prevState.contacts,
+        { id: nanoid(), name: name, number: number },
+      ],
+    }));
   };
-
-  //   if (!hasName) {
-  //     this.setState(prevState => ({
-  //       contacts: [
-  //         ...prevState.contacts,
-  //         { id: nanoid(), name: name, number: number },
-  //       ],
-  //     }));
-  //   }
-
-  //   if (!hasNumber) {
-  //     this.setState(prevState => ({
-  //       contacts: [
-  //         ...prevState.contacts,
-  //         { id: nanoid(), name: name, number: number },
-  //       ],
-  //     }));
-  //   }
-  // };
 
   deleteContact = contactId => {
     this.setState(prevState => ({
@@ -55,19 +44,28 @@ export class App extends Component {
     }));
   };
 
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
   render() {
+    const normalizedFilter = this.state.filter.toLocaleLowerCase();
+    const filteredContacts = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+
     return (
-      <div>
+      <Container>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact}></ContactForm>
 
         <h2>Contacts</h2>
-        {/* <Filter name={this.state.name} /> */}
+        <Filter value={this.state.filter} onChange={this.changeFilter}></Filter>
+
         <ContactList
-          items={this.state.contacts}
+          items={filteredContacts}
           onDelete={this.deleteContact}
         ></ContactList>
-      </div>
+      </Container>
     );
   }
 }
