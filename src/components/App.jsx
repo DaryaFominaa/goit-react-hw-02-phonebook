@@ -57,14 +57,22 @@ export class App extends Component {
       <Container>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact}></ContactForm>
+        {this.state.contacts.length > 0 ? (
+          <>
+            <h2>Contacts</h2>
+            <Filter
+              value={this.state.filter}
+              onChange={this.changeFilter}
+            ></Filter>
 
-        <h2>Contacts</h2>
-        <Filter value={this.state.filter} onChange={this.changeFilter}></Filter>
-
-        <ContactList
-          items={filteredContacts}
-          onDelete={this.deleteContact}
-        ></ContactList>
+            <ContactList
+              items={filteredContacts}
+              onDelete={this.deleteContact}
+            ></ContactList>
+          </>
+        ) : (
+          <h2>No Contacts Yet</h2>
+        )}
       </Container>
     );
   }
